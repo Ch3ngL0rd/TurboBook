@@ -5,3 +5,4 @@
 - Correctness: Verification of orderbook against NASDAQ closing auction data
 - Goal: Produce measurable results of technical learnings. Have fun.
 - First step is download ITCH data.
+- [command] tail -f wget-log - monitor a file in realtime - pretty cool
