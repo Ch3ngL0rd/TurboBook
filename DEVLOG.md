@@ -4,3 +4,4 @@
 - North Star Metric: Orders Processed Per Second (OPS) with p99 Latency < xμs
 - Correctness: Verification of orderbook against NASDAQ closing auction data
 - Goal: Produce measurable results of technical learnings. Have fun.
+- First step is download ITCH data.
