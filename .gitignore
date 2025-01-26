@@ -4,3 +4,6 @@ data/raw/*
 
 # Also ignore processed data
 data/processed/
+
+.vscode
+build/
