@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <format>
 
+import messages;
+
 void parse(std::istream &in, std::ostream &out)
 {
     char len_bytes[2];
@@ -12,9 +14,10 @@ void parse(std::istream &in, std::ostream &out)
     {
         // Get global position
         auto position = in.tellg();
-        
+
         in.read(len_bytes, 2);
-        if (in.eof() && in.gcount() == 0) {
+        if (in.eof() && in.gcount() == 0)
+        {
             std::cerr << "EOF reached\n";
             break;
         }
@@ -37,7 +40,16 @@ void parse(std::istream &in, std::ostream &out)
             return;
         }
 
-        in.ignore(message_length - 1);
+        if (message_type == 'S')
+        {
+            auto se = read_event_code(in);
+            std::cout << std::format("System event: {}\n", se.event_code);
+        }
+        else
+        {
+            in.ignore(message_length - 1);
+        }
+
         ++message_count;
     }
     std::cout << std::format("There were {} messages.\n", message_count);
