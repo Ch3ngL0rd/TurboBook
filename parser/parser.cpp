@@ -6,14 +6,22 @@
 
 void parse(std::istream &in, std::ostream &out)
 {
-    while (in)
+    char len_bytes[2];
+    auto message_count = 0;
+    while (true)
     {
-        char len_bytes[2];
+        // Get global position
+        auto position = in.tellg();
+        
         in.read(len_bytes, 2);
+        if (in.eof() && in.gcount() == 0) {
+            std::cerr << "EOF reached\n";
+            break;
+        }
         if (in.gcount() != 2)
         {
             std::cerr << std::format("Error reading message length at position: {}\n",
-                                     static_cast<std::streamoff>(in.tellg()));
+                                     static_cast<std::streamoff>(position));
             return;
         }
 
@@ -29,7 +37,8 @@ void parse(std::istream &in, std::ostream &out)
             return;
         }
 
-        out << "Message type: " << message_type << '\n';
         in.ignore(message_length - 1);
+        ++message_count;
     }
+    std::cout << std::format("There were {} messages.\n", message_count);
 }

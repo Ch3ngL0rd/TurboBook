@@ -23,3 +23,12 @@ hexdump -C ./data/raw/01302019.NASDAQ_ITCH50 | head -n 1
 - [learning] static_cast<std::streamoff>(in.tellg()): required since in.tellg() returns std::streampos
     - not formattable by default
     - static_cast<std::streamoff> converts it byte offset
+
+# Day 3 28/01/25
+- [bug] Issue reading the full file. Errors reading the end of file.
+- There are 368,366,634 messages to process.
+- Using modules.
+- [learning] `$^` refers to all dependencies in makefile rule, `$@` is the target name
+- [learning] `-c` compile only, no linking. produces *.o file instead of executable
+- [learning] global module fragment `module` allows includes without including them as the interface
+- got modules to work, along with reading system messages
