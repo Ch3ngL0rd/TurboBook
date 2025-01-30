@@ -1,8 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include "parser/parser.cpp"
 
 const std::string PATH = "./data/raw/01302019.NASDAQ_ITCH50";
+
+import parser;
 
 int main() {
     std::ifstream inputFile(PATH, std::ios::binary);

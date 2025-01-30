@@ -1,8 +1,11 @@
+module;
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <cstdint>
 #include <format>
+#include <string.h>
+module parser;
 
 import messages;
 
@@ -42,8 +45,14 @@ void parse(std::istream &in, std::ostream &out)
 
         if (message_type == 'S')
         {
-            auto se = read_event_code(in);
+            auto se = read_system_event(in);
             std::cout << std::format("System event: {}\n", se.event_code);
+        }
+        else if (message_type == 'R')
+        {
+            auto sd = read_stock_directory(in);
+            std::string stock_trimmed(sd.stock, strnlen(sd.stock, 8)); // Trim space padding
+            std::cout << stock_trimmed << '\t';
         }
         else
         {
