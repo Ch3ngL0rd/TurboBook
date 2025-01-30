@@ -32,3 +32,7 @@ hexdump -C ./data/raw/01302019.NASDAQ_ITCH50 | head -n 1
 - [learning] `-c` compile only, no linking. produces *.o file instead of executable
 - [learning] global module fragment `module` allows includes without including them as the interface
 - got modules to work, along with reading system messages
+
+# Day 4 30/01/25
+- [learning] Null terminated strings in C.
+- Added StockDirectory message to messages
